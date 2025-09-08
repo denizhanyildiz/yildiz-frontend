@@ -18,7 +18,7 @@ npm run preview
 ```
 
 ## Logo
-`public/logo.png` içine logonuzu koyun.
+`public/logo.pdf` içine logonuzu koyun.
 
 ## Dosya Yapısı (özet)
 
