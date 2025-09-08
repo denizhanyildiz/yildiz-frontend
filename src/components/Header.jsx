@@ -7,7 +7,7 @@ export default function Header() {
     <header className="site-header">
       <nav className="container nav">
         <Link to="/" className="brand" aria-label="Yıldız Tarım Teknoloji ve İnşaat">
-          <img src="/logo.png" alt="Logo" onError={(e) => (e.currentTarget.style.display = 'none')} />
+          <img src="/logo.pdf" alt="Logo" onError={(e) => (e.currentTarget.style.display = 'none')} />
           <span>Yıldız Tarım Teknoloji ve İnşaat</span>
         </Link>
         <div className="menu">

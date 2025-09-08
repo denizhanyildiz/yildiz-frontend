@@ -7,7 +7,7 @@ export default function Anasayfa() {
     <main className="page-anasayfa">
       <section className="container hero">
         <div className="logo card">
-          <img src="/logo.png" alt="Yıldız Tarım Teknoloji ve İnşaat Logo" onError={(e)=> (e.currentTarget.style.display='none')} />
+          <img src="/logo.pdf" alt="Yıldız Tarım Teknoloji ve İnşaat Logo" onError={(e)=> (e.currentTarget.style.display='none')} />
         </div>
         <h1>Yıldız Tarım Teknoloji ve İnşaat</h1>
         <p>Tarım, teknoloji ve inşaatta sürdürülebilir ve güvenilir çözümler üreten bir ekip.</p>
