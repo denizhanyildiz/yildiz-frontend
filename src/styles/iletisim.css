@@ -1,0 +1,8 @@
+
+/* 4) İletişim */
+.page-iletisim { min-height: 100vh; background: radial-gradient(60% 60% at 50% 30%, #f3e8ff, #ffffff 65%); }
+.page-iletisim .contact { padding: 1.25rem; display:grid; gap:1rem; }
+.contact-row { display:grid; grid-template-columns: 1fr; gap: .75rem; }
+@media (min-width: 880px) { .contact-row { grid-template-columns: 1fr 1fr; } }
+.contact .info p { margin:.15rem 0; color: var(--muted); }
+.contact .map { min-height: 240px; border-radius: var(--radius-lg); }
