@@ -3,11 +3,28 @@ import { Link } from 'react-router-dom';
 import '../styles/anasayfa.css';
 
 export default function Anasayfa() {
+
+  const handleLogoError = (e) => {
+    const img = e.currentTarget;
+    if (!img.dataset.fallback) {
+      img.dataset.fallback = 'true';
+      img.src = '/logo.png'; // varsa PNG yedeği
+      img.style.display = '';
+    } else {
+      img.style.display = 'none';
+    }
+  };
   return (
     <main className="page-anasayfa">
       <section className="container hero">
         <div className="logo card">
-          <img src="/logo.pdf" alt="Yıldız Tarım Teknoloji ve İnşaat Logo" onError={(e)=> (e.currentTarget.style.display='none')} />
+          <img
+            src="/logo.pdf"
+            width="160"
+            height="160"
+            alt="Yıldız Tarım Teknoloji ve İnşaat logosu"
+            onError={handleLogoError}
+          />
         </div>
         <h1>Yıldız Tarım Teknoloji ve İnşaat</h1>
         <p>Tarım, teknoloji ve inşaatta sürdürülebilir ve güvenilir çözümler üreten bir ekip.</p>
