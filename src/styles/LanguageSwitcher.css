@@ -1,0 +1,23 @@
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.lang-switcher label {
+  font-weight: 500;
+}
+
+.lang-switcher select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.lang-switcher select:hover {
+  border-color: #999;
+}

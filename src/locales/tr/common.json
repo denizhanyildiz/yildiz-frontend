@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Anasayfa",
+    "projects": "Projeler",
+    "about": "Biz Kimiz",
+    "contact": "\u0130leti\u015fim"
+  },
+  "home": {
+    "headline": "Y\u0131ld\u0131z \u0130n\u015faat\u2019a Ho\u015f Geldiniz",
+    "subtitle": "\u0130n\u015faatta kalite ve g\u00fcven."
+  },
+  "projects": {
+    "title": "Projelerimiz"
+  },
+  "about": {
+    "title": "Biz Kimiz"
+  },
+  "contact": {
+    "title": "\u0130leti\u015fim"
+  },
+  "actions": {
+    "change_language": "Dil"
+  },
+  "brand": "Y\u0131ld\u0131z Tar\u0131m Teknoloji ve \u0130n\u015faat",
+  "yildizDescription": "Tar\u0131m, teknoloji ve in\u015faatta s\u00fcrd\u00fcr\u00fclebilir ve g\u00fcvenilir \u00e7\u00f6z\u00fcmler \u00fcreten bir ekip.",
+  "mainJobs": "Ordak Alanlar\u0131m\u0131z",
+  "mainJobDesription": "\u0130n\u015faat, Tar\u0131m ve Teknoloji",
+  "approach": {
+    "title":"Yakla\u015f\u0131m\u0131m\u0131z",
+    "description": "Veri odakl\u0131 planlama, kaliteli malzeme, zaman\u0131nda teslim ve \u015feffaf ileti\u015fim."
+  }
+
+}

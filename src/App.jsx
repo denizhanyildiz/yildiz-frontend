@@ -5,6 +5,7 @@ import Anasayfa from './pages/Anasayfa.jsx';
 import Projeler from './pages/Projeler.jsx';
 import BizKimiz from './pages/BizKimiz.jsx';
 import Iletisim from './pages/Iletisim.jsx';
+import "./i18n";
 
 export default function App() {
   return (

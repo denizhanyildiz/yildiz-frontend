@@ -1,0 +1,32 @@
+{
+    "nav": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About Us",
+        "contact": "Contact"
+    },
+    "home": {
+        "headline": "Welcome to Y\u0131ld\u0131z \u0130n\u015faat",
+        "subtitle": "Quality and reliability in construction."
+    },
+    "projects": {
+        "title": "Our Projects"
+    },
+    "about": {
+        "title": "Who We Are"
+    },
+    "contact": {
+        "title": "Contact Us"
+    },
+    "actions": {
+        "change_language": "Language"
+    },
+    "brand": "Y\u0131ld\u0131z Agriculture Technology & Construction",
+    "yildizDescription": "A team that produces sustainable and reliable solutions in agriculture, technology and construction.",
+    "mainJobs": "Our focus work",
+    "mainJobDesription":"Construction, Agriculture and Technology",
+    "approach": {
+        "title":"Our approach",
+        "description": "Data-driven planning, quality materials, on-time delivery and transparent communication."
+    }
+}
