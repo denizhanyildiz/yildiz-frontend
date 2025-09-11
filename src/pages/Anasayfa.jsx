@@ -5,17 +5,6 @@ import { useTranslation } from "react-i18next";
 
 export default function Anasayfa() {
 
-  const handleLogoError = (e) => {
-    const img = e.currentTarget;
-    if (!img.dataset.fallback) {
-      img.dataset.fallback = 'true';
-      img.src = '/logo.png';
-      img.style.display = '';
-    } else {
-      img.style.display = 'none';
-    }
-  };
-
   const { t } = useTranslation();
   
   return (
@@ -23,10 +12,10 @@ export default function Anasayfa() {
       <section className="container hero">
         <div className="logo card">
           <img
-            src="/logo.pdf"
+            src="/logo.png"
             width="160"
             height="160"
-            onError={handleLogoError}
+            alt="Company Logo"
           />
         </div>
         <h1>{t("brand")}</h1>

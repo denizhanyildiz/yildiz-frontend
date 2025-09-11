@@ -10,13 +10,29 @@
         "subtitle": "Quality and reliability in construction."
     },
     "projects": {
-        "title": "Our Projects"
+        "title": "Our Projects",
+        "projects":"Projects",
+        "listTitle1":"Smart Irrigation Infrastructure",
+        "listDescription1": "Water-saving farm infrastructures with sensors and automation.",
+        "listTitle2":"Agricultural IoT Monitoring.",
+        "listDescription2":"Real-time monitoring of soil moisture, temperature, and climate data."
+  
     },
     "about": {
-        "title": "Who We Are"
+        "title": "Who We Are",
+        "description":"We are a multidisciplinary team combining engineering, data, and field experience. We develop field-validated, technology-enabled solutions.",
+        "doneProjects":" Projects",
+        "experiencedTeam":"Experienced Team",
+        "delivery":"On-time delivery",
+        "support":"After Sales Support"
     },
     "contact": {
-        "title": "Contact Us"
+        "header":"Communication",
+        "title": "Contact Us",
+        "email":"info@yildiztarim.com",
+        "phoneNumber":"5555555555",
+        "adress":"Bursa / T\u00fcrkiye",
+        "sendmail":"Send E-Mail"
     },
     "actions": {
         "change_language": "Language"

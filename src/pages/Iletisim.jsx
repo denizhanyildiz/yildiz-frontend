@@ -1,20 +1,26 @@
 import React from 'react';
 import '../styles/iletisim.css';
+import { useTranslation } from "react-i18next";
 
 export default function Iletisim() {
+  const { t } = useTranslation();
+  const email = t("contact.email");
+
   return (
     <main className="page-iletisim">
       <section className="container" style={{paddingTop:'2.2rem'}}>
-        <h2>İletişim</h2>
+        <h2>{t("contact.header")}</h2>
         <div className="contact card">
           <div className="contact-row">
             <div className="info">
-              <h3>Bize Ulaşın</h3>
-              <p>info@yildiz-tarin-insaat.example</p>
-              <p>+90 (312) 000 00 00</p>
-              <p>Ankara / Türkiye</p>
+              <h3>{t("contact.title")}</h3>
+              <p>{t("contact.email")}</p>
+              <p>{t("contact.phoneNumber")}</p>
+              <p>{t("contact.adress")}</p>
               <div style={{marginTop:'1rem'}}>
-                <a className="btn" href="mailto:info@yildiz-tarin-insaat.example">E-posta Gönder</a>
+                <a className="btn" href={`mailto:${email}`}>
+                  {t("contact.sendmail")}
+                </a>
               </div>
             </div>
             <div className="map card" style={{background:'#eef2ff', display:'grid', placeItems:'center'}}>
