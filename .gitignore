@@ -3,6 +3,3 @@ node_modules
 dist
 .vite
 .idea
-
-!dist/besevlerProjesi/
-!dist/endustriyelTarim/

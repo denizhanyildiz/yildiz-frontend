@@ -13,10 +13,10 @@ export default function Projeler() {
       end: t("projects.project1.endTime"),
       desc: t("projects.project1.desc"),
       images: [
-        "/dist/besevlerProjesi/1.jpg",
-        "/dist/besevlerProjesi/2.jpeg",
-        "/dist/besevlerProjesi/3.jpg",
-        "/dist/besevlerProjesi/4.jpeg",
+        "/besevlerProjesi/1.jpg",
+        "/besevlerProjesi/2.jpeg",
+        "/besevlerProjesi/3.jpg",
+        "/besevlerProjesi/4.jpeg",
       ]
     },
     {
@@ -25,10 +25,10 @@ export default function Projeler() {
       end: t("projects.project2.endTime"),
       desc: t("projects.project2.desc"),
       images: [
-        "/dist/endustriyelTarim/1.jpeg",
-        "/dist/endustriyelTarim/2.jpeg",
-        "/dist/endustriyelTarim/3.jpeg",
-        "/dist/endustriyelTarim/4.jpeg",
+        "/endustriyelTarim/1.jpeg",
+        "/endustriyelTarim/2.jpeg",
+        "/endustriyelTarim/3.jpeg",
+        "/endustriyelTarim/4.jpeg",
       ]
     }
   ];
