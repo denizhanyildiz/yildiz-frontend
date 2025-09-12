@@ -29,7 +29,7 @@
     "header":"\u0130leti\u015fim",
       "title": "Bizimle ileti\u015fime ge\u00e7in",
       "email":"info@yildiztarim.com",
-      "phoneNumber":"5555555555",
+      "phoneNumber":"+90 532 355 64 53",
       "adress":"Bursa / T\u00fcrkiye",
       "sendmail":"E-Posta G\u00f6nder"
   },
@@ -43,6 +43,10 @@
   "approach": {
     "title":"Yakla\u015f\u0131m\u0131m\u0131z",
     "description": "Veri odakl\u0131 planlama, kaliteli malzeme, zaman\u0131nda teslim ve \u015feffaf ileti\u015fim."
+  },
+  "languages": {        
+    "tr":"TR",
+    "en":"EN"
   }
 
 }

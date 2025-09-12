@@ -10,13 +10,8 @@ export default function Anasayfa() {
   return (
     <main className="page-anasayfa">
       <section className="container hero">
-        <div className="logo card">
-          <img
-            src="/logo.png"
-            width="160"
-            height="160"
-            alt="Company Logo"
-          />
+        <div className="logo">
+          <img src="/logo.png" alt="Company Logo" />
         </div>
         <h1>{t("brand")}</h1>
         <p>{t("yildizDescription")}</p>

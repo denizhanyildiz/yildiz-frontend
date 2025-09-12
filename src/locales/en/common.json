@@ -30,7 +30,7 @@
         "header":"Communication",
         "title": "Contact Us",
         "email":"info@yildiztarim.com",
-        "phoneNumber":"5555555555",
+        "phoneNumber":"+90 532 355 64 53",
         "adress":"Bursa / T\u00fcrkiye",
         "sendmail":"Send E-Mail"
     },
@@ -44,5 +44,9 @@
     "approach": {
         "title":"Our approach",
         "description": "Data-driven planning, quality materials, on-time delivery and transparent communication."
+    },
+    "language": {
+        "tr":"TR",
+        "en":"EN"
     }
 }

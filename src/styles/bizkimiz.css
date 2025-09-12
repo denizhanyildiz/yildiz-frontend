@@ -1,9 +1,36 @@
-
 /* 3) Biz Kimiz */
-.page-bizkimiz { min-height: 100vh; background: linear-gradient(180deg, #fff7ed, #ffffff 70%); }
-.page-bizkimiz .about { padding: 2rem; }
-.stats { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; margin-top: 1rem; }
-@media (min-width: 720px) { .stats { grid-template-columns: repeat(4, minmax(0,1fr)); } }
-.stat { text-align:center; padding: 1rem; }
-.stat strong { font-size: 28px; display:block; }
-.stat span { color: var(--muted); }
+.page-bizkimiz {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #fff7ed, #ffffff 70%);
+}
+
+.page-bizkimiz .about {
+    padding: 2rem;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 720px) {
+    .stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+}
+
+.stat strong {
+    font-size: 28px;
+    display: block;
+}
+
+.stat span {
+    color: var(--muted);
+}
