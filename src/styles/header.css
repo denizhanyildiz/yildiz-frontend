@@ -1,0 +1,28 @@
+.menu a span,
+.brand span {
+  display: inline;
+}
+
+/* Mobil görünüm */
+@media (max-width: 768px) {
+  /* Menüde sadece ikonları göster */
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu a span {
+    display: none; /* ikon dışındaki yazıları gizle */
+  }
+
+  /* Brand yazısını gizle */
+  .brand span {
+    display: none;
+  }
+
+  .brand img {
+  width: 35px;   /* istediğin boyutu ayarlayabilirsin */
+  height: auto;  /* oranı korusun */
+}
+}

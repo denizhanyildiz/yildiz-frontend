@@ -23,12 +23,12 @@
 }
 
 .page-anasayfa .hero .logo {
-  width: 220px;         /* istediğin boyutu verebilirsin */
-  aspect-ratio: 1;      /* tam kare kutu */
-  border-radius: 50%;   /* daire */
-  overflow: hidden;     /* dairenin dışını kes */
+  width: 220px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
   background: transparent;
-  border: 3px solid #facc15; /* isteğe bağlı altın çerçeve */
+  border: 3px solid #facc15;
   box-shadow: none;
   margin: 1rem auto 1.25rem;
   display: block;
@@ -37,7 +37,7 @@
 .page-anasayfa .hero .logo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* logoyu kesmeden sığdırır */
+  object-fit: contain;
   display: block;
 }
 

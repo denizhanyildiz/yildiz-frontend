@@ -17,7 +17,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="lang-switcher">
-      <label htmlFor="lang-select">{t("actions.change_language")}:</label>
+      <label htmlFor="lang-select"></label>
       <select id="lang-select" value={i18n.language} onChange={setLng}>
         <option value="tr">🇹🇷 TR</option>
         <option value="en">🇬🇧 EN</option>
