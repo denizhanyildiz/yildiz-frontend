@@ -11,28 +11,41 @@
     },
     "projects": {
         "title": "Our Projects",
-        "projects":"Projects",
-        "listTitle1":"Smart Irrigation Infrastructure",
+        "projects": "Projects",
+        "listTitle1": "Smart Irrigation Infrastructure",
         "listDescription1": "Water-saving farm infrastructures with sensors and automation.",
-        "listTitle2":"Agricultural IoT Monitoring.",
-        "listDescription2":"Real-time monitoring of soil moisture, temperature, and climate data."
-  
+        "listTitle2": "Agricultural IoT Monitoring.",
+        "listDescription2": "Real-time monitoring of soil moisture, temperature, and climate data.",
+        "project1": {
+            "title": "Besevler Housing Project",
+            "startTime": "01.02.2024",
+            "endTime": "01.12.2024",
+            "desc": "Modern housing project in the Besevler region of Bursa.",
+            "place": "Bursa/Turkey"
+        },
+        "project2": {
+            "title": "Industrial Agriculture",
+            "startTime": "01.02.2024",
+            "endTime": "01.12.2024",
+            "desc": "Industrial Planting and Spraying",
+            "place": "Bursa/Turkey"
+        }
     },
     "about": {
         "title": "Who We Are",
-        "description":"We are a multidisciplinary team combining engineering, data, and field experience. We develop field-validated, technology-enabled solutions.",
-        "doneProjects":" Projects",
-        "experiencedTeam":"Experienced Team",
-        "delivery":"On-time delivery",
-        "support":"After Sales Support"
+        "description": "We are a multidisciplinary team combining engineering, data, and field experience. We develop field-validated, technology-enabled solutions.",
+        "doneProjects": " Projects",
+        "experiencedTeam": "Experienced Team",
+        "delivery": "On-time delivery",
+        "support": "After Sales Support"
     },
     "contact": {
-        "header":"Communication",
+        "header": "Communication",
         "title": "Contact Us",
-        "email":"info@yildiztarim.com",
-        "phoneNumber":"+90 532 355 64 53",
-        "adress":"Bursa / T\u00fcrkiye",
-        "sendmail":"Send E-Mail"
+        "email": "info@yildiztarim.com",
+        "phoneNumber": "+90 532 355 64 53",
+        "adress": "Bursa / T\u00fcrkiye",
+        "sendmail": "Send E-Mail"
     },
     "actions": {
         "change_language": "Language"
@@ -40,13 +53,13 @@
     "brand": "Y\u0131ld\u0131z Agriculture Technology & Construction",
     "yildizDescription": "A team that produces sustainable and reliable solutions in agriculture, technology and construction.",
     "mainJobs": "Our focus work",
-    "mainJobDesription":"Construction, Agriculture and Technology",
+    "mainJobDesription": "Construction, Agriculture and Technology",
     "approach": {
-        "title":"Our approach",
+        "title": "Our approach",
         "description": "Data-driven planning, quality materials, on-time delivery and transparent communication."
     },
     "language": {
-        "tr":"TR",
-        "en":"EN"
+        "tr": "TR",
+        "en": "EN"
     }
 }

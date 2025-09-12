@@ -11,27 +11,41 @@
   },
   "projects": {
     "title": "Projelerimiz",
-    "projects":"Projeler",
-    "listTitle1":"Ak\u0131ll\u0131 Sulama Altyap\u0131s\u0131",
+    "projects": "Projeler",
+    "listTitle1": "Ak\u0131ll\u0131 Sulama Altyap\u0131s\u0131",
     "listDescription1": "Sens\u00f6r ve otomasyonla su tasarrufu sa\u011flayan tarla altyap\u0131lar\u0131.",
-    "listTitle2":"Tar\u0131msal IoT \u0130zleme",
-    "listDescription2":"Toprak nemi, s\u0131cakl\u0131k ve iklim verilerini ger\u00e7ek zamanl\u0131 takip."
+    "listTitle2": "Tar\u0131msal IoT \u0130zleme",
+    "listDescription2": "Toprak nemi, s\u0131cakl\u0131k ve iklim verilerini ger\u00e7ek zamanl\u0131 takip.",
+    "project1": {
+      "title": "Besevler Konut Projesi",
+      "startTime": "01.02.2024",
+      "endTime": "01.12.2024",
+      "desc": "Bursa Besevler b\u00f6lgesinde modern konut projesi.",
+      "place": "Bursa/T\u00fcrkiye"
+    },
+    "project2": {
+      "title": "End\u00fcstriyel Tar\u0131m",
+      "startTime": "01.02.2024",
+      "endTime": "01.12.2024",
+      "desc": "End\u00fcstriyel ekim ve ila\u00e7lama",
+      "place": "Bursa/T\u00fcrkiye"
+    }
   },
   "about": {
     "title": "Biz Kimiz",
-    "description":"M\u00fchendislik, veri ve saha deneyimini bir araya getiren multidisipliner bir ekibiz. Sahada do\u011frulanm\u0131\u015f, teknoloji destekli \u00e7\u00f6z\u00fcmler geli\u015ftiririz.",
-    "doneProjects":" Tamamlanan Projer",
-    "experiencedTeam":"Uzman Ekip",
-    "delivery":"Zaman\u0131nda Teslim",
-    "support":"Destek"
+    "description": "M\u00fchendislik, veri ve saha deneyimini bir araya getiren multidisipliner bir ekibiz. Sahada do\u011frulanm\u0131\u015f, teknoloji destekli \u00e7\u00f6z\u00fcmler geli\u015ftiririz.",
+    "doneProjects": " Tamamlanan Projer",
+    "experiencedTeam": "Uzman Ekip",
+    "delivery": "Zaman\u0131nda Teslim",
+    "support": "Destek"
   },
   "contact": {
-    "header":"\u0130leti\u015fim",
-      "title": "Bizimle ileti\u015fime ge\u00e7in",
-      "email":"info@yildiztarim.com",
-      "phoneNumber":"+90 532 355 64 53",
-      "adress":"Bursa / T\u00fcrkiye",
-      "sendmail":"E-Posta G\u00f6nder"
+    "header": "\u0130leti\u015fim",
+    "title": "Bizimle ileti\u015fime ge\u00e7in",
+    "email": "info@yildiztarim.com",
+    "phoneNumber": "+90 532 355 64 53",
+    "adress": "Bursa / T\u00fcrkiye",
+    "sendmail": "E-Posta G\u00f6nder"
   },
   "actions": {
     "change_language": "Dil"
@@ -41,12 +55,11 @@
   "mainJobs": "Ordak Alanlar\u0131m\u0131z",
   "mainJobDesription": "\u0130n\u015faat, Tar\u0131m ve Teknoloji",
   "approach": {
-    "title":"Yakla\u015f\u0131m\u0131m\u0131z",
+    "title": "Yakla\u015f\u0131m\u0131m\u0131z",
     "description": "Veri odakl\u0131 planlama, kaliteli malzeme, zaman\u0131nda teslim ve \u015feffaf ileti\u015fim."
   },
-  "languages": {        
-    "tr":"TR",
-    "en":"EN"
+  "languages": {
+    "tr": "TR",
+    "en": "EN"
   }
-
 }

@@ -15,6 +15,38 @@
     gap: 1rem;
 }
 
+.project-images {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: .75rem;
+  overflow: hidden;
+}
+
+.project-images .images-row {
+  display: flex;
+  gap: .5rem;
+}
+
+.project-images img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: .5rem;
+}
+
+.nav-btn {
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: .3rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 @media (min-width: 720px) {
     .projects {
         grid-template-columns: repeat(2, minmax(0, 1fr));
