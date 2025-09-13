@@ -3,25 +3,98 @@ import '../styles/projeler.css';
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-/** Google Drive görüntü linki hata verirse tek seferlik thumbnail endpoint'ine düş */
+/* --- Helpers --- */
+function driveViewUrl(src) {
+  if (!src) return '';
+  if (typeof src !== 'string') return '';
+  if (!src.includes('http')) return `https://drive.google.com/uc?export=view&id=${src}`;
+  const idFromFile = src.match(/\/file\/d\/([^/]+)/)?.[1];
+  const idFromOpen = src.match(/[?&]id=([^&]+)/)?.[1];
+  const id = idFromFile || idFromOpen;
+  if (id) return `https://drive.google.com/uc?export=view&id=${id}`;
+  if (src.includes('drive.google.com/uc?')) return src;
+  return src;
+}
+
 function onDriveImgError(e) {
   const img = e.currentTarget;
   if (img.dataset.fallbackDone === '1') {
-    img.style.visibility = 'hidden'; // ikinci kez de olmadıysa gizle
+    img.style.visibility = 'hidden';
     return;
   }
   img.dataset.fallbackDone = '1';
-  const id =
-    img.src.match(/[?&]id=([^&]+)/)?.[1] ||
-    img.src.match(/\/d\/([^/]+)/)?.[1];
+  const id = img.src.match(/[?&]id=([^&]+)/)?.[1] || img.src.match(/\/d\/([^/]+)/)?.[1];
   if (id) {
-    // w1600 genişliği genelde yeterli, istersen büyütebilirsin
     img.src = `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
   } else {
     img.style.visibility = 'hidden';
   }
 }
 
+function ytId(input) {
+  if (!input) return '';
+  if (typeof input !== 'string') return '';
+  const i = input.trim();
+  if (!i.includes('http')) return i;
+  const m =
+    i.match(/[?&]v=([^&]+)/) ||
+    i.match(/youtu\.be\/([^?]+)/) ||
+    i.match(/youtube\.com\/embed\/([^?]+)/);
+  return m?.[1] || '';
+}
+const ytThumb = (id) => id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+const ytEmbed = (id) => id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0` : '';
+
+/* --- Normalizers (string veya nesne desteği) --- */
+function normalizeImages(images = []) {
+  return images.map((entry) => {
+    if (typeof entry === 'string') {
+      return {
+        type: 'image',
+        src: driveViewUrl(entry),
+        title: '',
+        desc: ''
+      };
+    }
+    const src = driveViewUrl(entry.src || entry.url || entry.link || '');
+    return {
+      type: 'image',
+      src,
+      title: entry.title || '',
+      desc: entry.desc || ''
+    };
+  }).filter(it => !!it.src);
+}
+
+function normalizeVideos(videos = []) {
+  return videos.map((entry) => {
+    // string ise ID/URL olabilir
+    if (typeof entry === 'string') {
+      const id = ytId(entry);
+      return {
+        type: 'video',
+        id,
+        thumb: ytThumb(id),
+        embed: ytEmbed(id),
+        title: '',
+        desc: ''
+      };
+    }
+    // nesne ise id | src | url olabilir
+    const idRaw = entry.id || entry.src || entry.url;
+    const id = ytId(idRaw);
+    return {
+      type: 'video',
+      id,
+      thumb: ytThumb(id),
+      embed: ytEmbed(id),
+      title: entry.title || '',
+      desc: entry.desc || ''
+    };
+  }).filter(it => !!it.id);
+}
+
+/* --- Page --- */
 export default function Projeler() {
   const { t } = useTranslation();
 
@@ -32,10 +105,14 @@ export default function Projeler() {
       end: t("projects.project1.endTime"),
       desc: t("projects.project1.desc"),
       images: [
-        "https://drive.google.com/uc?export=view&id=1CtlK1DKIolfx_3tLkZbenPVtsB8QU1Uv",
-        "https://drive.google.com/uc?export=view&id=1n_uc2A1pZ-yyC6xKpCfhACx154zZYO35",
-        "https://drive.google.com/uc?export=view&id=17JTmASmxS62KjbkTccv18o_aVpE7pPKQ",
-        "https://drive.google.com/uc?export=view&id=1Oud9_GbF0lWZJs1nKYAmqCttEM7SiIS4"
+        { src: "1CtlK1DKIolfx_3tLkZbenPVtsB8QU1Uv", title: "Görsel Başlık 1", desc: "Görsel Açıklama 1" },
+        { src: "1n_uc2A1pZ-yyC6xKpCfhACx154zZYO35", title: "Görsel Başlık 2", desc: "Görsel Açıklama 2" },
+        { src: "17JTmASmxS62KjbkTccv18o_aVpE7pPKQ", title: "Görsel Başlık 3", desc: "Görsel Açıklama 3" },
+        { src: "1Oud9_GbF0lWZJs1nKYAmqCttEM7SiIS4", title: "Görsel Başlık 4", desc: "Görsel Açıklama 4" }
+      ],
+      videos: [
+        // Senin gönderdiğin: src alanı kullanıyordu — artık destekli.
+        { src: "kWjmhDkPQQ4", title: "Video Başlık 1", desc: "Video Açıklama 1" }
       ]
     },
     {
@@ -43,11 +120,15 @@ export default function Projeler() {
       start: t("projects.project2.startTime"),
       end: t("projects.project2.endTime"),
       desc: t("projects.project2.desc"),
+      // Bu projede string öğeler bıraktım; normalizer stringleri de destekliyor.
       images: [
-        "https://drive.google.com/uc?export=view&id=1xYdItdShbWonJzEQAPX_bzwUF4xq895l",
-        "https://drive.google.com/uc?export=view&id=1OBO3fpaXDkWi8PXm7TUn_cG3rAZEZo_6",
-        "https://drive.google.com/uc?export=view&id=1Do0oN8NUqG5BYF_ka_3MUQrWFEwlyXOH",
-        "https://drive.google.com/uc?export=view&id=1aCYcsxqgvgdSeNA9XRdgzVqKZd9Y-HuI"
+        "1xYdItdShbWonJzEQAPX_bzwUF4xq895l",
+        "1OBO3fpaXDkWi8PXm7TUn_cG3rAZEZo_6",
+        "1Do0oN8NUqG5BYF_ka_3MUQrWFEwlyXOH",
+        "1aCYcsxqgvgdSeNA9XRdgzVqKZd9Y-HuI"
+      ],
+      videos: [
+        "kWjmhDkPQQ4"
       ]
     }
   ];
@@ -67,9 +148,11 @@ export default function Projeler() {
 }
 
 function ProjectCard({ project, t }) {
-  const thumbs = project.images.slice(0, 4);
+  // String/obj karışık veriyi normalize et
+  const imageItems = normalizeImages(project.images);
+  const videoItems = normalizeVideos(project.videos);
+  const media = [...imageItems, ...videoItems];
 
-  // Lightbox state
   const [isOpen, setIsOpen] = useState(false);
   const [idx, setIdx] = useState(0);
 
@@ -77,14 +160,13 @@ function ProjectCard({ project, t }) {
   const close = () => setIsOpen(false);
 
   const prev = useCallback(() => {
-    setIdx((i) => (i - 1 + thumbs.length) % thumbs.length);
-  }, [thumbs.length]);
+    setIdx((i) => (i - 1 + media.length) % media.length);
+  }, [media.length]);
 
   const next = useCallback(() => {
-    setIdx((i) => (i + 1) % thumbs.length);
-  }, [thumbs.length]);
+    setIdx((i) => (i + 1) % media.length);
+  }, [media.length]);
 
-  // Klavye: Esc kapat, Sol/Sağ gezin
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e) => {
@@ -105,21 +187,34 @@ function ProjectCard({ project, t }) {
 
       <div className="project-images" aria-label="Proje küçük görselleri">
         <div className="images-row">
-          {thumbs.map((src, i) => (
+          {media.map((m, i) => (
             <button
               key={i}
               type="button"
-              className="thumb-btn"
+              className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
               onClick={() => openAt(i)}
-              aria-label={`Görseli büyüt (${i + 1}/${thumbs.length})`}
+              aria-label={m.type === 'video'
+                ? `Videoyu aç (${i + 1}/${media.length})`
+                : `Görseli büyüt (${i + 1}/${media.length})`}
             >
-              <img
-                src={src}
-                alt={`${project.title} görsel ${i + 1}`}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                onError={onDriveImgError}
-              />
+              {m.type === 'image' ? (
+                <img
+                  src={m.src}
+                  alt={m.title || `${project.title} görsel ${i + 1}`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={onDriveImgError}
+                />
+              ) : (
+                <>
+                  <img
+                    src={m.thumb}
+                    alt={m.title || `${project.title} video küçük resim ${i + 1}`}
+                    loading="lazy"
+                  />
+                  <span className="play-badge" aria-hidden="true">▶</span>
+                </>
+              )}
             </button>
           ))}
         </div>
@@ -136,22 +231,39 @@ function ProjectCard({ project, t }) {
             <ChevronLeft size={28} />
           </button>
 
-          <img
-            key={thumbs[idx]}               // her değişimde yeniden mount olsun
-            className="lightbox-img"
-            src={thumbs[idx]}
-            alt={`${project.title} büyük görsel ${idx + 1}`}
-            onClick={(e) => e.stopPropagation()}
-            referrerPolicy="no-referrer"
-            onError={onDriveImgError}
-          />
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            {/* Başlık ve açıklama medya öğesinden */}
+            <div className="lightbox-caption">
+              <h4>{media[idx].title || project.title}</h4>
+              <p>{media[idx].desc || project.desc}</p>
+            </div>
+            {media[idx]?.type === "image" ? (
+              <img
+                key={media[idx].src}
+                className="lightbox-img"
+                src={media[idx].src}
+                alt={media[idx].title || `${project.title} görsel`}
+                referrerPolicy="no-referrer"
+                onError={onDriveImgError}
+              />
+            ) : (
+              <iframe
+                key={media[idx].id}
+                className="lightbox-iframe"
+                src={media[idx].embed}
+                title={media[idx].title || `${project.title} video`}
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+          </div>
 
           <button className="lightbox-nav next" aria-label="Sonraki" onClick={(e) => { e.stopPropagation(); next(); }}>
             <ChevronRight size={28} />
           </button>
 
           <div className="lightbox-counter" onClick={(e) => e.stopPropagation()}>
-            {idx + 1} / {thumbs.length}
+            {idx + 1} / {media.length}
           </div>
         </div>
       )}
