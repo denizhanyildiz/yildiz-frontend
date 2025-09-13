@@ -203,62 +203,52 @@ function ProjectCard({ project, t }) {
 
       {/* --- KART İÇİ 4’LÜ KÜÇÜK MEDYA STRİP --- */}
       <div className="project-mini4">
-        <button
-          className="mini4-nav prev"
-          type="button"
-          aria-label="Önceki"
-          onClick={(e) => { e.stopPropagation(); prevSmall(); }}
-          disabled={!canPrevSmall}
-        >
-          <ChevronLeft size={18} />
-        </button>
+        <div className="mini4-wrap">
+          <button
+            className="mini4-nav prev"
+            type="button"
+            aria-label="Önceki"
+            onClick={(e) => { e.stopPropagation(); prevSmall(); }}
+            disabled={!canPrevSmall}
+          >
+            <ChevronLeft size={18} />
+          </button>
 
-        <div className="mini4-row" role="list">
-          {visibleItems.map((m, i) => {
-            const absIndex = winStart + i; // lightbox için gerçek index
-            return (
-              <button
-                key={absIndex}
-                type="button"
-                role="listitem"
-                className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
-                onClick={() => openAt(absIndex)}
-                aria-label={m.type === 'video'
-                  ? `Videoyu büyüt (${absIndex + 1}/${media.length})`
-                  : `Görseli büyüt (${absIndex + 1}/${media.length})`}
-              >
-                {m.type === 'image' ? (
-                  <img
-                    src={m.src}
-                    alt={m.title || `${project.title} görsel ${absIndex + 1}`}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    onError={onDriveImgError}
-                  />
-                ) : (
-                  <>
-                    <img
-                      src={m.thumb}
-                      alt={m.title || `${project.title} video küçük resim ${absIndex + 1}`}
-                      loading="lazy"
-                    />
-                    <span className="play-badge" aria-hidden="true">▶</span>
-                  </>
-                )}
-              </button>
-            );
-          })}
+          <div className="mini4-row" role="list">
+            {visibleItems.map((m, i) => {
+              const absIndex = winStart + i;
+              return (
+                <button
+                  key={absIndex}
+                  type="button"
+                  role="listitem"
+                  className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
+                  onClick={() => openAt(absIndex)}
+                >
+                  {m.type === 'image' ? (
+                    <img src={m.src} alt={m.title || `${project.title} görsel ${absIndex + 1}`} loading="lazy"
+                      referrerPolicy="no-referrer" onError={onDriveImgError} />
+                  ) : (
+                    <>
+                      <img src={m.thumb} alt={m.title || `${project.title} video küçük resim ${absIndex + 1}`} loading="lazy" />
+                      <span className="play-badge" aria-hidden="true">▶</span>
+                    </>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            className="mini4-nav next"
+            type="button"
+            aria-label="Sonraki"
+            onClick={(e) => { e.stopPropagation(); nextSmall(); }}
+            disabled={!canNextSmall}
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
-
-        <button
-          className="mini4-nav next"
-          type="button"
-          aria-label="Sonraki"
-          onClick={(e) => { e.stopPropagation(); nextSmall(); }}
-          disabled={!canNextSmall}
-        >
-          <ChevronRight size={18} />
-        </button>
       </div>
 
       {/* LIGHTBOX */}
