@@ -152,6 +152,11 @@ function ProjectCard({ project, t }) {
   const imageItems = normalizeImages(project.images);
   const videoItems = normalizeVideos(project.videos);
   const media = [...imageItems, ...videoItems];
+  const VISIBLE = 4;                          // aynı anda görünen öğe sayısı
+  const [winStart, setWinStart] = useState(0); // soldaki görünür öğenin indexi
+
+  const canPrevSmall = winStart > 0;
+  const canNextSmall = winStart + VISIBLE < media.length;
 
   const [isOpen, setIsOpen] = useState(false);
   const [idx, setIdx] = useState(0);
@@ -178,6 +183,17 @@ function ProjectCard({ project, t }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [isOpen, prev, next]);
 
+  const prevSmall = () => {
+    if (!canPrevSmall) return;
+    setWinStart((s) => s - 1);
+  };
+  const nextSmall = () => {
+    if (!canNextSmall) return;
+    setWinStart((s) => s + 1);
+  };
+
+  const visibleItems = media.slice(winStart, winStart + VISIBLE);
+
   return (
     <article className="project-card card">
       <h3>{project.title}</h3>
@@ -185,39 +201,64 @@ function ProjectCard({ project, t }) {
       <p><strong>{t("projects.endTime")}</strong> {project.end}</p>
       <p>{project.desc}</p>
 
-      <div className="project-images" aria-label="Proje küçük görselleri">
-        <div className="images-row">
-          {media.map((m, i) => (
-            <button
-              key={i}
-              type="button"
-              className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
-              onClick={() => openAt(i)}
-              aria-label={m.type === 'video'
-                ? `Videoyu aç (${i + 1}/${media.length})`
-                : `Görseli büyüt (${i + 1}/${media.length})`}
-            >
-              {m.type === 'image' ? (
-                <img
-                  src={m.src}
-                  alt={m.title || `${project.title} görsel ${i + 1}`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  onError={onDriveImgError}
-                />
-              ) : (
-                <>
+      {/* --- KART İÇİ 4’LÜ KÜÇÜK MEDYA STRİP --- */}
+      <div className="project-mini4">
+        <button
+          className="mini4-nav prev"
+          type="button"
+          aria-label="Önceki"
+          onClick={(e) => { e.stopPropagation(); prevSmall(); }}
+          disabled={!canPrevSmall}
+        >
+          <ChevronLeft size={18} />
+        </button>
+
+        <div className="mini4-row" role="list">
+          {visibleItems.map((m, i) => {
+            const absIndex = winStart + i; // lightbox için gerçek index
+            return (
+              <button
+                key={absIndex}
+                type="button"
+                role="listitem"
+                className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
+                onClick={() => openAt(absIndex)}
+                aria-label={m.type === 'video'
+                  ? `Videoyu büyüt (${absIndex + 1}/${media.length})`
+                  : `Görseli büyüt (${absIndex + 1}/${media.length})`}
+              >
+                {m.type === 'image' ? (
                   <img
-                    src={m.thumb}
-                    alt={m.title || `${project.title} video küçük resim ${i + 1}`}
+                    src={m.src}
+                    alt={m.title || `${project.title} görsel ${absIndex + 1}`}
                     loading="lazy"
+                    referrerPolicy="no-referrer"
+                    onError={onDriveImgError}
                   />
-                  <span className="play-badge" aria-hidden="true">▶</span>
-                </>
-              )}
-            </button>
-          ))}
+                ) : (
+                  <>
+                    <img
+                      src={m.thumb}
+                      alt={m.title || `${project.title} video küçük resim ${absIndex + 1}`}
+                      loading="lazy"
+                    />
+                    <span className="play-badge" aria-hidden="true">▶</span>
+                  </>
+                )}
+              </button>
+            );
+          })}
         </div>
+
+        <button
+          className="mini4-nav next"
+          type="button"
+          aria-label="Sonraki"
+          onClick={(e) => { e.stopPropagation(); nextSmall(); }}
+          disabled={!canNextSmall}
+        >
+          <ChevronRight size={18} />
+        </button>
       </div>
 
       {/* LIGHTBOX */}

@@ -1,33 +1,32 @@
 /* 2) Projeler */
 .page-projeler {
-    min-height: 100vh;
-    background: linear-gradient(180deg, #eff6ff, #ffffff 65%);
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eff6ff, #ffffff 65%);
 }
 
 .page-projeler h2 {
-    font-size: clamp(24px, 4vw, 36px);
-    margin: 1.25rem 0;
+  font-size: clamp(24px, 4vw, 36px);
+  margin: 1.25rem 0;
 }
 
 .projects {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
 }
 
+/* Eski küçük görseller bloğu (artık mini4 kullanıyoruz ama kalsın) */
 .project-images {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-top: .75rem;
-  overflow: hidden;
 }
-
 .project-images .images-row {
   display: flex;
   gap: .5rem;
 }
-
 .project-images img {
   width: 80px;
   height: 60px;
@@ -56,11 +55,9 @@
   overflow: hidden;
   cursor: pointer;
 }
+.thumb-btn img { display: block; }
 
-.thumb-btn img {
-  display: block;
-}
-
+/* ------- LIGHTBOX ------- */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -76,6 +73,15 @@
   max-height: 86vh;
   border-radius: .6rem;
   box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+.lightbox-iframe {
+  width: min(92vw, 1200px);
+  height: min(86vh, 675px); /* 16:9'a yakın */
+  border: 0;
+  border-radius: .6rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  background: #000;
 }
 
 .lightbox-close {
@@ -116,15 +122,6 @@
   border-radius: .4rem;
 }
 
-.lightbox-iframe {
-  width: min(92vw, 1200px);
-  height: min(86vh, 675px); /* 16:9'a yakın */
-  border: 0;
-  border-radius: .6rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  background: #000;
-}
-
 .lightbox-content {
   display: flex;
   flex-direction: column;
@@ -140,13 +137,11 @@
   max-width: 80%;
   margin-top: .5rem;
 }
-
 .lightbox-caption h4 {
   margin: 0 0 .25rem;
   font-size: 1.3rem;
   font-weight: 600;
 }
-
 .lightbox-caption p {
   color: #fff !important;
   margin: 0;
@@ -155,36 +150,93 @@
   opacity: .9;
 }
 
-.thumb-video {
-  position: relative;
-}
+/* Video küçük resminde oynat rozeti */
+.thumb-video { position: relative; }
 .thumb-video .play-badge {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1;
   background: radial-gradient(transparent 55%, rgba(0,0,0,.35));
-  color: white;
+  color: #fff;
   text-shadow: 0 2px 6px rgba(0,0,0,.6);
   pointer-events: none;
 }
 
+/* ------- KART İÇİ 4’LÜ KÜÇÜK MEDYA STRİP ------- */
+.project-mini4 {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .75rem;
+  z-index: 1;
+}
+
+/* Boyut değişkenleri: 4 öğe * genişlik + 3 boşluk */
+.mini4-row {
+  --thumbW: 96px;   /* önce 120px idi -> küçülttük */
+  --thumbH: 64px;   /* önce 80px idi  -> küçülttük */
+  --gap: .5rem;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--thumbW);
+  gap: var(--gap);
+  overflow: hidden;  /* sadece 4 tanesi görünür */
+  width: calc(var(--thumbW) * 4 + var(--gap) * 3);
+}
+
+.mini4-row .thumb-btn {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  line-height: 0;
+  border-radius: .55rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+.mini4-row .thumb-btn img {
+  width: var(--thumbW);
+  height: var(--thumbH);
+  object-fit: cover;
+  display: block;
+  border-radius: .55rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,.06);
+}
+
+/* Sol/Sağ oklar */
+.mini4-nav {
+  border: 0;
+  background: rgba(0,0,0,.18);
+  color: #fff;
+  border-radius: 999px;
+  padding: .35rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.mini4-nav:hover { background: rgba(0,0,0,.28); }
+.mini4-nav:disabled { opacity: .35; cursor: default; }
+
+/* Mobilde 3’lü panele geç (opsiyonel) */
+@media (max-width: 520px) {
+  .mini4-row {
+    --thumbW: 88px;
+    --thumbH: 58px;
+    width: calc(var(--thumbW) * 3 + var(--gap) * 2);
+  }
+}
+
 @media (min-width: 720px) {
-    .projects {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.project-card {
-    padding: 1.1rem;
-}
-
-.project-card h3 {
-    margin: .2rem 0 .35rem;
-}
-
-.project-card p {
-    color: var(--muted);
-}
+.project-card { padding: 1.1rem; }
+.project-card h3 { margin: .2rem 0 .35rem; }
+.project-card p { color: var(--muted); }
