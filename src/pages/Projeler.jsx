@@ -105,14 +105,14 @@ export default function Projeler() {
       end: t("projects.project1.endTime"),
       desc: t("projects.project1.desc"),
       images: [
-        { src: "1CtlK1DKIolfx_3tLkZbenPVtsB8QU1Uv", title: "Görsel Başlık 1", desc: "Görsel Açıklama 1" },
-        { src: "1n_uc2A1pZ-yyC6xKpCfhACx154zZYO35", title: "Görsel Başlık 2", desc: "Görsel Açıklama 2" },
-        { src: "17JTmASmxS62KjbkTccv18o_aVpE7pPKQ", title: "Görsel Başlık 3", desc: "Görsel Açıklama 3" },
-        { src: "1Oud9_GbF0lWZJs1nKYAmqCttEM7SiIS4", title: "Görsel Başlık 4", desc: "Görsel Açıklama 4" }
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 1", desc: "Görsel Açiklama 1" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 2", desc: "Görsel Açiklama 2" },
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 3", desc: "Görsel Açiklama 3" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 4", desc: "Görsel Açiklama 4" }
       ],
       videos: [
         // Senin gönderdiğin: src alanı kullanıyordu — artık destekli.
-        { src: "kWjmhDkPQQ4", title: "Video Başlık 1", desc: "Video Açıklama 1" }
+        { src: "Jz8ECxTaJks", title: "Video Başlik 1", desc: "Video Açklama 1" }
       ]
     },
     {
@@ -122,13 +122,13 @@ export default function Projeler() {
       desc: t("projects.project2.desc"),
       // Bu projede string öğeler bıraktım; normalizer stringleri de destekliyor.
       images: [
-        "1xYdItdShbWonJzEQAPX_bzwUF4xq895l",
-        "1OBO3fpaXDkWi8PXm7TUn_cG3rAZEZo_6",
-        "1Do0oN8NUqG5BYF_ka_3MUQrWFEwlyXOH",
-        "1aCYcsxqgvgdSeNA9XRdgzVqKZd9Y-HuI"
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 5", desc: "Görsel Açiklama 5" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 6", desc: "Görsel Açiklama 6" },
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 7", desc: "Görsel Açiklama 7" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 8", desc: "Görsel Açiklama 8" }
       ],
       videos: [
-        "kWjmhDkPQQ4"
+        { src: "Jz8ECxTaJks", title: "Video Başlik 2", desc: "Video Açklama 2" }
       ]
     }
   ];
