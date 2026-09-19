@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import Seo from '../components/Seo.jsx';
 import '../styles/projeler.css';
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -135,6 +136,7 @@ export default function Projeler() {
 
   return (
     <main className="page-projeler">
+      <Seo title={t("projects.projects")} />
       <section className="container section">
         <h2 className="section-title">{t("projects.projects")}</h2>
         <div className="projects">

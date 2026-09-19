@@ -103,5 +103,9 @@
     "logoAlt": "Yıldız logosu",
     "rights": "Tüm hakları saklıdır.",
     "menu": "Ana menü"
+  },
+  "notFound": {
+    "text": "Aradığınız sayfa bulunamadı.",
+    "back": "Anasayfaya Dön"
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import Seo from '../components/Seo.jsx';
 import '../styles/iletisim.css';
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +13,7 @@ export default function Iletisim() {
 
   return (
     <main className="page-iletisim">
+      <Seo title={t("contact.header")} />
       <section className="container section">
         <h2 className="section-title">{t("contact.header")}</h2>
         <p className="lead">{t("contact.intro")}</p>

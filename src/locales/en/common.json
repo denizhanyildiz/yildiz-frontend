@@ -103,5 +103,9 @@
     "logoAlt": "Yıldız logo",
     "rights": "All rights reserved.",
     "menu": "Main menu"
+  },
+  "notFound": {
+    "text": "The page you are looking for could not be found.",
+    "back": "Back to Home"
   }
 }

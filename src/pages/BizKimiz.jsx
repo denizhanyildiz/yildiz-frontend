@@ -1,4 +1,5 @@
 import React from 'react';
+import Seo from '../components/Seo.jsx';
 import '../styles/bizkimiz.css';
 import { useTranslation } from "react-i18next";
 
@@ -13,6 +14,7 @@ export default function BizKimiz() {
 
   return (
     <main className="page-bizkimiz">
+      <Seo title={t("about.title")} />
       <section className="container section">
         <div className="about card">
           <h2 className="section-title">{t("about.title")}</h2>
