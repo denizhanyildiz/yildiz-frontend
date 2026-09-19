@@ -107,5 +107,47 @@
   "notFound": {
     "text": "Aradığınız sayfa bulunamadı.",
     "back": "Anasayfaya Dön"
+  },
+  "process": {
+    "title": "Nasıl Çalışıyoruz?",
+    "steps": [
+      {
+        "title": "Keşif",
+        "desc": "Arazi veya yapıyı yerinde inceler, ihtiyacınızı dinleriz."
+      },
+      {
+        "title": "Planlama",
+        "desc": "Bütçe, takvim ve teknik plan birlikte netleştirilir."
+      },
+      {
+        "title": "Uygulama",
+        "desc": "Kaliteli malzeme ve saha ekibiyle işi hayata geçiririz."
+      },
+      {
+        "title": "Teslim",
+        "desc": "Zamanında teslim eder, sonrasında da destek veririz."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Sık Sorulan Sorular",
+    "items": [
+      {
+        "q": "Hangi bölgelerde hizmet veriyorsunuz?",
+        "a": "Merkezimiz Bursa'dadır; Bursa ve çevre illerdeki projelerde çalışıyoruz."
+      },
+      {
+        "q": "Keşif ve teklif ücretli mi?",
+        "a": "Hayır. Keşif ve ilk teklif talebi ücretsizdir; bize telefon, WhatsApp veya e-posta ile ulaşabilirsiniz."
+      },
+      {
+        "q": "Hem inşaat hem tarım projesi yapıyor musunuz?",
+        "a": "Evet. İnşaat, endüstriyel tarım uygulamaları ve sensör/otomasyon tabanlı akıllı sulama çözümleri sunuyoruz."
+      },
+      {
+        "q": "Teslim sonrası destek veriyor musunuz?",
+        "a": "Evet, teslim sonrasında da destek ekibimiz yanınızda."
+      }
+    ]
   }
 }

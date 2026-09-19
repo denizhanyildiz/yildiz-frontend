@@ -48,6 +48,31 @@ export default function Anasayfa() {
       </section>
 
       <section className="container section">
+        <h2 className="section-title">{t("process.title")}</h2>
+        <ol className="steps">
+          {t("process.steps", { returnObjects: true }).map((step, i) => (
+            <li key={i} className="step card">
+              <span className="step-no">{i + 1}</span>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="container section">
+        <h2 className="section-title">{t("faq.title")}</h2>
+        <div className="faq">
+          {t("faq.items", { returnObjects: true }).map((item, i) => (
+            <details key={i} className="faq-item card">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="container section">
         <div className="approach">
           <h3>{t("approach.title")}</h3>
           <p>{t("approach.description")}</p>
