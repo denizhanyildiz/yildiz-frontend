@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import QuoteForm from '../components/QuoteForm.jsx';
 import Seo from '../components/Seo.jsx';
 import '../styles/iletisim.css';
 import { useTranslation } from "react-i18next";
@@ -42,6 +43,7 @@ export default function Iletisim() {
             />
           </div>
         </div>
+        <QuoteForm />
       </section>
     </main>
   );

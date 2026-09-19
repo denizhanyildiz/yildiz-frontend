@@ -149,5 +149,18 @@
         "a": "Evet, teslim sonrasında da destek ekibimiz yanınızda."
       }
     ]
+  },
+  "quote": {
+    "title": "Teklif / Keşif Talebi",
+    "name": "Ad Soyad",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "service": "Hizmet",
+    "message": "Mesajınız",
+    "submit": "Talep Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Talebiniz alındı, en kısa sürede dönüş yapacağız.",
+    "error": "Gönderilemedi. Lütfen tekrar deneyin veya bizi arayın.",
+    "subject": "Teklif talebi"
   }
 }
