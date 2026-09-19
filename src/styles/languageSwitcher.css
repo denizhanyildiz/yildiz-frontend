@@ -5,3 +5,6 @@
 }
 .lang-switcher select option { color: #16241f; }
 .lang-switcher select:hover { border-color: var(--gold); }
+
+/* iOS, 16px altındaki alanlara odaklanınca sayfayı yakınlaştırır */
+@media (max-width: 640px) { .lang-switcher select { font-size: 16px; padding: .35rem .6rem; } }

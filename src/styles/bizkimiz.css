@@ -7,3 +7,5 @@
 }
 .stat strong { font-family: var(--font-display); font-variant-numeric: lining-nums; font-size: clamp(2.6rem, 6vw, 3.4rem); line-height: 1.1; margin-bottom: .3rem; color: var(--green-700); display: block; }
 .stat > span { color: var(--muted); font-size: 1rem; }
+
+@media (max-width: 640px) { .about { padding: 1.5rem 1.25rem; } .stat { padding: 1rem .5rem; } }
