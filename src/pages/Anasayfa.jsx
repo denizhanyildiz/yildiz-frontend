@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HardHat, Sprout, Cpu, ArrowRight } from 'lucide-react';
+import Seo from '../components/Seo.jsx';
 import '../styles/anasayfa.css';
 import { useTranslation } from "react-i18next";
 
@@ -15,6 +16,7 @@ export default function Anasayfa() {
 
   return (
     <main className="page-anasayfa">
+      <Seo />
       <section className="hero">
         <div className="container hero-inner">
           <div className="hero-text">

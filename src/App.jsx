@@ -7,6 +7,7 @@ import Anasayfa from './pages/Anasayfa.jsx';
 import Projeler from './pages/Projeler.jsx';
 import BizKimiz from './pages/BizKimiz.jsx';
 import Iletisim from './pages/Iletisim.jsx';
+import NotFound from './pages/NotFound.jsx';
 import "./i18n";
 
 function ScrollToTop() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/projeler" element={<Projeler />} />
         <Route path="/biz-kimiz" element={<BizKimiz />} />
         <Route path="/iletisim" element={<Iletisim />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <WhatsAppButton />
