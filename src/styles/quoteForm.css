@@ -1,0 +1,14 @@
+.quote-form { padding: 2rem; display: grid; gap: 1rem; margin-top: 1.25rem; }
+.quote-form h3 { margin: 0; }
+.quote-form label { display: grid; gap: .35rem; font-size: .85rem; font-weight: 600; color: var(--green-800); }
+.quote-form input, .quote-form select, .quote-form textarea {
+  font: inherit; font-weight: 400; color: var(--text); padding: .7rem .9rem;
+  border: 1px solid var(--line); border-radius: .75rem; background: #fff; width: 100%;
+}
+.quote-form input:focus, .quote-form select:focus, .quote-form textarea:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(201, 162, 74, .25); }
+.quote-two { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 600px) { .quote-two { grid-template-columns: 1fr 1fr; } }
+.quote-form button { justify-self: start; }
+.quote-status { margin: 0; min-height: 1.2em; font-size: .9rem; }
+.quote-status.success { color: #15803d; }
+.quote-status.error { color: #b91c1c; }
