@@ -1,5 +1,6 @@
 import React from 'react';
 import Seo from '../components/Seo.jsx';
+import CountUp from '../components/CountUp.jsx';
 import '../styles/bizkimiz.css';
 import { useTranslation } from "react-i18next";
 
@@ -22,7 +23,7 @@ export default function BizKimiz() {
           <div className="stats">
             {stats.map((s, i) => (
               <div key={i} className="stat">
-                <strong>{s.k}</strong>
+                <strong><CountUp value={s.k} /></strong>
                 <span>{s.v}</span>
               </div>
             ))}
