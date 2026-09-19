@@ -5,33 +5,6 @@ import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 /* --- Helpers --- */
-function driveViewUrl(src) {
-  if (!src) return '';
-  if (typeof src !== 'string') return '';
-  if (!src.includes('http')) return `https://drive.google.com/uc?export=view&id=${src}`;
-  const idFromFile = src.match(/\/file\/d\/([^/]+)/)?.[1];
-  const idFromOpen = src.match(/[?&]id=([^&]+)/)?.[1];
-  const id = idFromFile || idFromOpen;
-  if (id) return `https://drive.google.com/uc?export=view&id=${id}`;
-  if (src.includes('drive.google.com/uc?')) return src;
-  return src;
-}
-
-function onDriveImgError(e) {
-  const img = e.currentTarget;
-  if (img.dataset.fallbackDone === '1') {
-    img.style.visibility = 'hidden';
-    return;
-  }
-  img.dataset.fallbackDone = '1';
-  const id = img.src.match(/[?&]id=([^&]+)/)?.[1] || img.src.match(/\/d\/([^/]+)/)?.[1];
-  if (id) {
-    img.src = `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
-  } else {
-    img.style.visibility = 'hidden';
-  }
-}
-
 function ytId(input) {
   if (!input) return '';
   if (typeof input !== 'string') return '';
@@ -52,12 +25,12 @@ function normalizeImages(images = []) {
     if (typeof entry === 'string') {
       return {
         type: 'image',
-        src: driveViewUrl(entry),
+        src: entry,
         title: '',
         desc: ''
       };
     }
-    const src = driveViewUrl(entry.src || entry.url || entry.link || '');
+    const src = entry.src || entry.url || entry.link || '';
     return {
       type: 'image',
       src,
@@ -105,14 +78,8 @@ export default function Projeler() {
       start: t("projects.project1.startTime"),
       end: t("projects.project1.endTime"),
       desc: t("projects.project1.desc"),
-      images: [
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" },
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" }
-      ],
+      images: [1, 2, 3, 4, 5].map((n) => ({ src: `/projects/besevler/${n}.webp` })),
       videos: [
-        // Senin gönderdiğin: src alanı kullanıyordu — artık destekli.
         { src: "Jz8ECxTaJks" }
       ]
     },
@@ -121,13 +88,7 @@ export default function Projeler() {
       start: t("projects.project2.startTime"),
       end: t("projects.project2.endTime"),
       desc: t("projects.project2.desc"),
-      // Bu projede string öğeler bıraktım; normalizer stringleri de destekliyor.
-      images: [
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" },
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" }
-      ],
+      images: [],
       videos: [
         { src: "Jz8ECxTaJks" }
       ]
@@ -211,7 +172,7 @@ function ProjectCard({ project, t }) {
       <p>{project.desc}</p>
 
       {/* --- KART İÇİ 4’LÜ KÜÇÜK MEDYA STRİP --- */}
-      <div className="project-mini4">
+      {media.length > 0 && <div className="project-mini4">
         <div className="mini4-wrap">
           <button
             className="mini4-nav prev"
@@ -236,7 +197,7 @@ function ProjectCard({ project, t }) {
                 >
                   {m.type === 'image' ? (
                     <img src={m.src} alt={m.title || `${project.title} ${t('common.image')} ${absIndex + 1}`} loading="lazy"
-                      referrerPolicy="no-referrer" onError={onDriveImgError} />
+                      />
                   ) : (
                     <>
                       <img src={m.thumb} alt={m.title || `${project.title} ${t('common.video')} ${absIndex + 1}`} loading="lazy"
@@ -259,7 +220,7 @@ function ProjectCard({ project, t }) {
             <ChevronRight size={18} />
           </button>
         </div>
-      </div>
+      </div>}
 
       {/* LIGHTBOX */}
       {isOpen && media[idx] && (
@@ -284,8 +245,7 @@ function ProjectCard({ project, t }) {
                 className="lightbox-img"
                 src={media[idx].src}
                 alt={media[idx].title || `${project.title} ${t('common.image')}`}
-                referrerPolicy="no-referrer"
-                onError={onDriveImgError}
+               
               />
             ) : (
               <iframe
