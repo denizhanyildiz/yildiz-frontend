@@ -5,5 +5,5 @@
   text-align: center; padding: 1.4rem 1rem; border-radius: 1rem;
   background: var(--green-100); border: 1px solid var(--line);
 }
-.stat strong { font-family: var(--font-display); font-variant-numeric: lining-nums; font-size: 2.2rem; color: var(--green-700); display: block; }
-.stat > span { color: var(--muted); font-size: .92rem; }
+.stat strong { font-family: var(--font-display); font-variant-numeric: lining-nums; font-size: clamp(2.6rem, 6vw, 3.4rem); line-height: 1.1; margin-bottom: .3rem; color: var(--green-700); display: block; }
+.stat > span { color: var(--muted); font-size: 1rem; }
