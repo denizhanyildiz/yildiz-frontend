@@ -56,7 +56,9 @@
     "openMap": "Haritada Aç",
     "call": "Ara",
     "intro": "Projeleriniz için keşif ve teklif almak üzere bize ulaşın.",
-    "mapLang": "tr"
+    "mapLang": "tr",
+    "whatsapp": "WhatsApp ile Yazın",
+    "whatsappMessage": "Merhaba, projeniz hakkında bilgi almak istiyorum."
   },
   "actions": {
     "change_language": "Dil"

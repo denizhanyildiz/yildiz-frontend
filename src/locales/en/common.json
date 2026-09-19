@@ -56,7 +56,9 @@
     "openMap": "Open in Maps",
     "call": "Call",
     "intro": "Get in touch for a site survey and a quote for your project.",
-    "mapLang": "en"
+    "mapLang": "en",
+    "whatsapp": "Chat on WhatsApp",
+    "whatsappMessage": "Hello, I would like information about your services."
   },
   "actions": {
     "change_language": "Language"
