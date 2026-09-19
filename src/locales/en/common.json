@@ -1,68 +1,105 @@
 {
-    "nav": {
-        "home": "Home",
-        "projects": "Projects",
-        "about": "About Us",
-        "contact": "Contact"
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "home": {
+    "headline": "Welcome to Yıldız İnşaat",
+    "subtitle": "Quality and reliability in construction."
+  },
+  "projects": {
+    "title": "Our Projects",
+    "projects": "Projects",
+    "listTitle1": "Smart Irrigation Infrastructure",
+    "listDescription1": "Water-saving farm infrastructures with sensors and automation.",
+    "listTitle2": "Agricultural IoT Monitoring.",
+    "listDescription2": "Real-time monitoring of soil moisture, temperature, and climate data.",
+    "startTime": "Start Time:",
+    "endTime": "End Time:",
+    "ongoing": "Ongoing..",
+    "project1": {
+      "title": "Besevler Housing Project",
+      "startTime": "01.02.2024",
+      "endTime": "01.12.2024",
+      "desc": "Modern housing project in the Besevler region of Bursa.",
+      "place": "Bursa/Turkey"
     },
-    "home": {
-        "headline": "Welcome to Y\u0131ld\u0131z \u0130n\u015faat",
-        "subtitle": "Quality and reliability in construction."
-    },
-    "projects": {
-        "title": "Our Projects",
-        "projects": "Projects",
-        "listTitle1": "Smart Irrigation Infrastructure",
-        "listDescription1": "Water-saving farm infrastructures with sensors and automation.",
-        "listTitle2": "Agricultural IoT Monitoring.",
-        "listDescription2": "Real-time monitoring of soil moisture, temperature, and climate data.",
-        "startTime":"Start Time:",
-        "endTime":"End Time:",
-        "ongoing":"Ongoing..",
-        "project1": {
-            "title": "Besevler Housing Project",
-            "startTime": "01.02.2024",
-            "endTime": "01.12.2024",
-            "desc": "Modern housing project in the Besevler region of Bursa.",
-            "place": "Bursa/Turkey"
-        },
-        "project2": {
-            "title": "Industrial Agriculture",
-            "startTime": "01.02.2024",
-            "endTime": "01.12.2024",
-            "desc": "Industrial Planting and Spraying",
-            "place": "Bursa/Turkey"
-        }
-    },
-    "about": {
-        "title": "Who We Are",
-        "description": "We are a multidisciplinary team combining engineering, data, and field experience. We develop field-validated, technology-enabled solutions.",
-        "doneProjects": " Projects",
-        "experiencedTeam": "Experienced Team",
-        "delivery": "On-time delivery",
-        "support": "After Sales Support"
-    },
-    "contact": {
-        "header": "Communication",
-        "title": "Contact Us",
-        "email": "info@yildiztarim.com",
-        "phoneNumber": "+90 532 355 64 53",
-        "adress": "Bursa / T\u00fcrkiye",
-        "sendmail": "Send E-Mail"
-    },
-    "actions": {
-        "change_language": "Language"
-    },
-    "brand": "Y\u0131ld\u0131z Agriculture Technology & Construction",
-    "yildizDescription": "A team that produces sustainable and reliable solutions in agriculture, technology and construction.",
-    "mainJobs": "Our focus work",
-    "mainJobDesription": "Construction, Agriculture and Technology",
-    "approach": {
-        "title": "Our approach",
-        "description": "Data-driven planning, quality materials, on-time delivery and transparent communication."
-    },
-    "language": {
-        "tr": "TR",
-        "en": "EN"
+    "project2": {
+      "title": "Industrial Agriculture",
+      "startTime": "01.02.2024",
+      "endTime": "01.12.2024",
+      "desc": "Industrial Planting and Spraying",
+      "place": "Bursa/Turkey"
     }
+  },
+  "about": {
+    "title": "Who We Are",
+    "description": "We are a multidisciplinary team combining engineering, data, and field experience. We develop field-validated, technology-enabled solutions.",
+    "doneProjects": " Projects",
+    "experiencedTeam": "Experienced Team",
+    "delivery": "On-time delivery",
+    "support": "After Sales Support"
+  },
+  "contact": {
+    "header": "Contact",
+    "title": "Contact Us",
+    "email": "info@yildiztarim.com",
+    "phoneNumber": "+90 532 355 64 53",
+    "adress": "Konak, Göl Sk. 3A, 16265 Nilüfer/Bursa",
+    "sendmail": "Send E-Mail",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Phone",
+    "addressLabel": "Address",
+    "mapTitle": "Location of Yıldız Agriculture Technology & Construction",
+    "openMap": "Open in Maps",
+    "call": "Call",
+    "intro": "Get in touch for a site survey and a quote for your project.",
+    "mapLang": "en"
+  },
+  "actions": {
+    "change_language": "Language"
+  },
+  "brand": "Yıldız Agriculture Technology & Construction",
+  "yildizDescription": "A team that produces sustainable and reliable solutions in agriculture, technology and construction.",
+  "mainJobs": "Our focus work",
+  "mainJobDesription": "Construction, Agriculture and Technology",
+  "approach": {
+    "title": "Our approach",
+    "description": "Data-driven planning, quality materials, on-time delivery and transparent communication."
+  },
+  "language": {
+    "tr": "TR",
+    "en": "EN"
+  },
+  "hero": {
+    "eyebrow": "Bursa · Construction · Agriculture · Technology",
+    "cta": "Explore Our Projects",
+    "cta2": "Contact Us"
+  },
+  "services": {
+    "construction": {
+      "title": "Construction",
+      "desc": "Reliable, high-quality delivery of housing and building projects from planning to handover."
+    },
+    "agriculture": {
+      "title": "Agriculture",
+      "desc": "Industrial planting, spraying and modern practices that raise yield."
+    },
+    "technology": {
+      "title": "Technology",
+      "desc": "Sensor, automation and data-driven smart irrigation and monitoring solutions."
+    }
+  },
+  "common": {
+    "prev": "Previous",
+    "next": "Next",
+    "close": "Close",
+    "image": "image",
+    "video": "video",
+    "logoAlt": "Yıldız logo",
+    "rights": "All rights reserved.",
+    "menu": "Main menu"
+  }
 }

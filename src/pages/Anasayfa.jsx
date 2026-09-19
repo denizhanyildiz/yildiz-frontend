@@ -1,37 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { HardHat, Sprout, Cpu, ArrowRight } from 'lucide-react';
 import '../styles/anasayfa.css';
 import { useTranslation } from "react-i18next";
 
-export default function Anasayfa() {
+const services = [
+  { key: 'construction', Icon: HardHat },
+  { key: 'agriculture', Icon: Sprout },
+  { key: 'technology', Icon: Cpu },
+];
 
+export default function Anasayfa() {
   const { t } = useTranslation();
-  
+
   return (
     <main className="page-anasayfa">
-      <section className="container hero">
-        <div className="logo">
-          <img src="/logo.png" alt="Company Logo" />
-        </div>
-        <h1>{t("brand")}</h1>
-        <p>{t("yildizDescription")}</p>
-        <div className="quick">
-          <Link className="btn" to="/projeler">{t("nav.projects")}</Link>
-          <Link className="btn" to="/biz-kimiz">{t("about.title")}</Link>
-          <Link className="btn" to="/iletisim">{t("contact.title")}</Link>
+      <section className="hero">
+        <div className="container hero-inner">
+          <div className="hero-text">
+            <span className="eyebrow">{t("hero.eyebrow")}</span>
+            <h1>{t("brand")}</h1>
+            <p>{t("yildizDescription")}</p>
+            <div className="quick">
+              <Link className="btn btn-gold" to="/projeler">{t("hero.cta")} <ArrowRight size={18} aria-hidden="true" /></Link>
+              <Link className="btn btn-ghost" to="/iletisim">{t("hero.cta2")}</Link>
+            </div>
+          </div>
+          <div className="hero-logo">
+            <img src="/logo.png" alt={t("common.logoAlt")} />
+          </div>
         </div>
       </section>
 
-      <section className="container" style={{marginTop:'2.5rem'}}>
-        <div className="grid-2">
-          <div className="card" style={{padding:'1.25rem'}}>
-            <h3>{t("mainJobs")}</h3>
-            <p className="muted">{t("mainJobDesription")}</p>
-          </div>
-          <div className="card" style={{padding:'1.25rem'}}>
-            <h3>{t("approach.title")}</h3>
-            <p className="muted">{t("approach.description")}</p>
-          </div>
+      <section className="container section">
+        <h2 className="section-title">{t("mainJobs")}</h2>
+        <div className="services">
+          {services.map(({ key, Icon }) => (
+            <article key={key} className="service card">
+              <span className="service-icon"><Icon size={26} aria-hidden="true" /></span>
+              <h3>{t(`services.${key}.title`)}</h3>
+              <p>{t(`services.${key}.desc`)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="container section">
+        <div className="approach">
+          <h3>{t("approach.title")}</h3>
+          <p>{t("approach.description")}</p>
+          <Link className="btn btn-gold" to="/biz-kimiz">{t("about.title")} <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
       </section>
     </main>

@@ -5,34 +5,31 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher.jsx';
 import '../styles/header.css';
 
+const links = [
+  { to: '/', key: 'nav.home', Icon: Home, end: true },
+  { to: '/projeler', key: 'nav.projects', Icon: Building2 },
+  { to: '/biz-kimiz', key: 'nav.about', Icon: Users2 },
+  { to: '/iletisim', key: 'nav.contact', Icon: Phone },
+];
+
 export default function Header() {
   const { t } = useTranslation();
   return (
     <header className="site-header">
-      <nav className="container nav">
-        <Link to="/" className="brand" aria-label={t("brand")}>
-          <img
-            src="/logo.png"
-            alt="Company Logo"
-          />
-          <span>{t("brand")}</span>
+      <nav className="container nav" aria-label={t('common.menu')}>
+        <Link to="/" className="brand" aria-label={t('brand')}>
+          <img src="/logo.png" alt={t('common.logoAlt')} />
+          <span>{t('brand')}</span>
         </Link>
         <div className="menu">
-          <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : undefined}>
-            <Home size={18} /> <span>{t("nav.home")}</span>
-          </NavLink>
-          <NavLink to="/projeler" className={({ isActive }) => isActive ? 'active' : undefined}>
-            <Building2 size={18} /> <span>{t("nav.projects")}</span>
-          </NavLink>
-          <NavLink to="/biz-kimiz" className={({ isActive }) => isActive ? 'active' : undefined}>
-            <Users2 size={18} /> <span>{t("nav.about")}</span>
-          </NavLink>
-          <NavLink to="/iletisim" className={({ isActive }) => isActive ? 'active' : undefined}>
-            <Phone size={18} /> <span>{t("nav.contact")}</span>
-          </NavLink>
+          {links.map(({ to, key, Icon, end }) => (
+            <NavLink key={to} to={to} end={end} className={({ isActive }) => (isActive ? 'active' : undefined)}>
+              <Icon size={18} aria-hidden="true" /> <span>{t(key)}</span>
+            </NavLink>
+          ))}
         </div>
         <LanguageSwitcher />
       </nav>
     </header>
-  )
+  );
 }

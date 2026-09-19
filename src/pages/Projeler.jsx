@@ -105,14 +105,14 @@ export default function Projeler() {
       end: t("projects.project1.endTime"),
       desc: t("projects.project1.desc"),
       images: [
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 1", desc: "Görsel Açiklama 1" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 2", desc: "Görsel Açiklama 2" },
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 3", desc: "Görsel Açiklama 3" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 4", desc: "Görsel Açiklama 4" }
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" },
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" }
       ],
       videos: [
         // Senin gönderdiğin: src alanı kullanıyordu — artık destekli.
-        { src: "Jz8ECxTaJks", title: "Video Başlik 1", desc: "Video Açklama 1" }
+        { src: "Jz8ECxTaJks" }
       ]
     },
     {
@@ -122,21 +122,21 @@ export default function Projeler() {
       desc: t("projects.project2.desc"),
       // Bu projede string öğeler bıraktım; normalizer stringleri de destekliyor.
       images: [
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 5", desc: "Görsel Açiklama 5" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 6", desc: "Görsel Açiklama 6" },
-        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9", title: "Görsel Başlik 7", desc: "Görsel Açiklama 7" },
-        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI", title: "Görsel Başlik 8", desc: "Görsel Açiklama 8" }
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" },
+        { src: "1P2yscSfnSjvz_mE9oOqF28IbGVFx2Jg9" },
+        { src: "1rI3EHBTwMBuPjOq4gwHK7MHuRA6maokI" }
       ],
       videos: [
-        { src: "Jz8ECxTaJks", title: "Video Başlik 2", desc: "Video Açklama 2" }
+        { src: "Jz8ECxTaJks" }
       ]
     }
   ];
 
   return (
     <main className="page-projeler">
-      <section className="container" style={{ paddingTop: '2.2rem' }}>
-        <h2>{t("projects.projects")}</h2>
+      <section className="container section">
+        <h2 className="section-title">{t("projects.projects")}</h2>
         <div className="projects">
           {projects.map((p, i) => (
             <ProjectCard key={i} project={p} t={t} />
@@ -180,7 +180,12 @@ function ProjectCard({ project, t }) {
       if (e.key === 'ArrowRight') next();
     };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+    };
   }, [isOpen, prev, next]);
 
   const prevSmall = () => {
@@ -197,8 +202,10 @@ function ProjectCard({ project, t }) {
   return (
     <article className="project-card card">
       <h3>{project.title}</h3>
-      <p><strong>{t("projects.startTime")}</strong> {project.start}</p>
-      <p><strong>{t("projects.endTime")}</strong> {project.end}</p>
+      <div className="project-dates">
+        <span><strong>{t("projects.startTime")}</strong> {project.start}</span>
+        <span><strong>{t("projects.endTime")}</strong> {project.end}</span>
+      </div>
       <p>{project.desc}</p>
 
       {/* --- KART İÇİ 4’LÜ KÜÇÜK MEDYA STRİP --- */}
@@ -207,7 +214,7 @@ function ProjectCard({ project, t }) {
           <button
             className="mini4-nav prev"
             type="button"
-            aria-label="Önceki"
+            aria-label={t("common.prev")}
             onClick={(e) => { e.stopPropagation(); prevSmall(); }}
             disabled={!canPrevSmall}
           >
@@ -226,11 +233,12 @@ function ProjectCard({ project, t }) {
                   onClick={() => openAt(absIndex)}
                 >
                   {m.type === 'image' ? (
-                    <img src={m.src} alt={m.title || `${project.title} görsel ${absIndex + 1}`} loading="lazy"
+                    <img src={m.src} alt={m.title || `${project.title} ${t('common.image')} ${absIndex + 1}`} loading="lazy"
                       referrerPolicy="no-referrer" onError={onDriveImgError} />
                   ) : (
                     <>
-                      <img src={m.thumb} alt={m.title || `${project.title} video küçük resim ${absIndex + 1}`} loading="lazy" />
+                      <img src={m.thumb} alt={m.title || `${project.title} ${t('common.video')} ${absIndex + 1}`} loading="lazy"
+                        onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
                       <span className="play-badge" aria-hidden="true">▶</span>
                     </>
                   )}
@@ -242,7 +250,7 @@ function ProjectCard({ project, t }) {
           <button
             className="mini4-nav next"
             type="button"
-            aria-label="Sonraki"
+            aria-label={t("common.next")}
             onClick={(e) => { e.stopPropagation(); nextSmall(); }}
             disabled={!canNextSmall}
           >
@@ -252,13 +260,13 @@ function ProjectCard({ project, t }) {
       </div>
 
       {/* LIGHTBOX */}
-      {isOpen && (
+      {isOpen && media[idx] && (
         <div className="lightbox-overlay" role="dialog" aria-modal="true" onClick={close}>
-          <button className="lightbox-close" aria-label="Kapat" onClick={(e) => { e.stopPropagation(); close(); }}>
+          <button className="lightbox-close" aria-label={t("common.close")} onClick={(e) => { e.stopPropagation(); close(); }}>
             <X size={22} />
           </button>
 
-          <button className="lightbox-nav prev" aria-label="Önceki" onClick={(e) => { e.stopPropagation(); prev(); }}>
+          <button className="lightbox-nav prev" aria-label={t("common.prev")} onClick={(e) => { e.stopPropagation(); prev(); }}>
             <ChevronLeft size={28} />
           </button>
 
@@ -273,7 +281,7 @@ function ProjectCard({ project, t }) {
                 key={media[idx].src}
                 className="lightbox-img"
                 src={media[idx].src}
-                alt={media[idx].title || `${project.title} görsel`}
+                alt={media[idx].title || `${project.title} ${t('common.image')}`}
                 referrerPolicy="no-referrer"
                 onError={onDriveImgError}
               />
@@ -282,14 +290,14 @@ function ProjectCard({ project, t }) {
                 key={media[idx].id}
                 className="lightbox-iframe"
                 src={media[idx].embed}
-                title={media[idx].title || `${project.title} video`}
+                title={media[idx].title || `${project.title} ${t('common.video')}`}
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
               />
             )}
           </div>
 
-          <button className="lightbox-nav next" aria-label="Sonraki" onClick={(e) => { e.stopPropagation(); next(); }}>
+          <button className="lightbox-nav next" aria-label={t("common.next")} onClick={(e) => { e.stopPropagation(); next(); }}>
             <ChevronRight size={28} />
           </button>
 

@@ -1,23 +1,7 @@
-.lang-switcher {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.lang-switcher label {
-  font-weight: 500;
-}
-
 .lang-switcher select {
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font-size: 14px;
-  cursor: pointer;
+  padding: .4rem .7rem; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: transparent; color: #fff; font-size: .85rem; font-weight: 600; cursor: pointer;
 }
-
-.lang-switcher select:hover {
-  border-color: #999;
-}
+.lang-switcher select option { color: #16241f; }
+.lang-switcher select:hover { border-color: var(--gold); }
