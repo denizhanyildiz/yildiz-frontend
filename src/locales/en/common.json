@@ -107,5 +107,47 @@
   "notFound": {
     "text": "The page you are looking for could not be found.",
     "back": "Back to Home"
+  },
+  "process": {
+    "title": "How We Work",
+    "steps": [
+      {
+        "title": "Survey",
+        "desc": "We inspect the land or building on site and listen to your needs."
+      },
+      {
+        "title": "Planning",
+        "desc": "Budget, schedule and technical plan are defined together."
+      },
+      {
+        "title": "Execution",
+        "desc": "Quality materials and our field team bring the plan to life."
+      },
+      {
+        "title": "Handover",
+        "desc": "We deliver on time and keep supporting you afterwards."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "Which regions do you serve?",
+        "a": "We are based in Bursa and work on projects in Bursa and neighbouring provinces."
+      },
+      {
+        "q": "Are surveys and quotes charged?",
+        "a": "No. The site survey and first quote are free; reach us by phone, WhatsApp or e-mail."
+      },
+      {
+        "q": "Do you do both construction and agriculture projects?",
+        "a": "Yes. We offer construction, industrial agriculture and sensor/automation-based smart irrigation."
+      },
+      {
+        "q": "Do you provide after-delivery support?",
+        "a": "Yes, our support team stays with you after handover."
+      }
+    ]
   }
 }
