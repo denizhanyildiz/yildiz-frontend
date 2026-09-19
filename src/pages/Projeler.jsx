@@ -79,9 +79,7 @@ export default function Projeler() {
       end: t("projects.project1.endTime"),
       desc: t("projects.project1.desc"),
       images: [1, 2, 7, 8, 3, 4, 5, 6].map((n) => ({ src: `/projects/besevler/${n}.webp` })),
-      videos: [
-        { src: "Jz8ECxTaJks" }
-      ]
+      videos: []
     },
     {
       title: t("projects.project2.title"),
