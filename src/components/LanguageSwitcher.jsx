@@ -4,23 +4,19 @@ import "../styles/languageSwitcher.css";
 
 export default function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
+  // Tarayıcı "tr-TR" gibi bölgesel kod döndürebilir; select yalnızca "tr"/"en" içerir.
+  const current = (i18n.resolvedLanguage || i18n.language || "tr").slice(0, 2);
 
   useEffect(() => {
-    document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
-
-  const setLng = (e) => {
-    const lng = e.target.value;
-    i18n.changeLanguage(lng);
-    localStorage.setItem("i18nextLng", lng);
-  };
+    document.documentElement.lang = current;
+  }, [current]);
 
   return (
     <div className="lang-switcher">
-      <label htmlFor="lang-select"></label>
-      <select id="lang-select" value={i18n.language} onChange={setLng}>
-        <option value="tr">🇹🇷 TR</option>
-        <option value="en">🇬🇧 EN</option>
+      <label htmlFor="lang-select" className="sr-only">{t("actions.change_language")}</label>
+      <select id="lang-select" value={current} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+        <option value="tr">TR</option>
+        <option value="en">EN</option>
       </select>
     </div>
   );

@@ -1,28 +1,35 @@
-.menu a span,
-.brand span {
-  display: inline;
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(15, 46, 37, .92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201, 162, 74, .35);
 }
 
-/* Mobil görünüm */
-@media (max-width: 768px) {
-  /* Menüde sadece ikonları göster */
-  .menu a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .6rem 0; }
 
+.brand {
+  display: flex; align-items: center; gap: .7rem;
+  font-weight: 600; font-size: .95rem; text-decoration: none; color: #fff; min-width: 0;
+}
+.brand img { width: 44px; height: 44px; object-fit: contain; flex: none; }
+
+.menu { display: flex; gap: .25rem; }
+.menu a {
+  display: flex; align-items: center; gap: .4rem;
+  text-decoration: none; color: rgba(255, 255, 255, .8);
+  padding: .55rem .9rem; border-radius: 999px; font-weight: 500; font-size: .92rem;
+  transition: background .2s, color .2s;
+}
+.menu a:hover { color: #fff; background: rgba(255, 255, 255, .08); }
+.menu a.active { background: var(--gold); color: var(--green-900); }
+
+@media (max-width: 900px) { .brand span { display: none; } }
+
+/* Mobil: yalnızca ikonlar; metin ekran okuyucular için erişilebilir kalır */
+@media (max-width: 640px) {
+  .menu a { padding: .6rem; }
   .menu a span {
-    display: none; /* ikon dışındaki yazıları gizle */
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap;
   }
-
-  /* Brand yazısını gizle */
-  .brand span {
-    display: none;
-  }
-
-  .brand img {
-  width: 35px;   /* istediğin boyutu ayarlayabilirsin */
-  height: auto;  /* oranı korusun */
-}
+  .brand img { width: 38px; height: 38px; }
 }
