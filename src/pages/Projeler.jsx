@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Seo from '../components/Seo.jsx';
 import '../styles/projeler.css';
 import { useTranslation } from "react-i18next";
@@ -113,11 +113,8 @@ function ProjectCard({ project, t }) {
   const imageItems = normalizeImages(project.images);
   const videoItems = normalizeVideos(project.videos);
   const media = [...imageItems, ...videoItems];
-  const VISIBLE = 4;                          // aynı anda görünen öğe sayısı
-  const [winStart, setWinStart] = useState(0); // soldaki görünür öğenin indexi
-
-  const canPrevSmall = winStart > 0;
-  const canNextSmall = winStart + VISIBLE < media.length;
+  const rowRef = useRef(null);
+  const touchX = useRef(null);
 
   const [isOpen, setIsOpen] = useState(false);
   const [idx, setIdx] = useState(0);
@@ -149,16 +146,20 @@ function ProjectCard({ project, t }) {
     };
   }, [isOpen, prev, next]);
 
-  const prevSmall = () => {
-    if (!canPrevSmall) return;
-    setWinStart((s) => s - 1);
-  };
-  const nextSmall = () => {
-    if (!canNextSmall) return;
-    setWinStart((s) => s + 1);
+  // Şeridi bir sayfa kadar kaydır (masaüstü okları)
+  const scrollRow = (dir) => {
+    const el = rowRef.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' });
   };
 
-  const visibleItems = media.slice(winStart, winStart + VISIBLE);
+  // Lightbox'ta yatay kaydırma ile önceki/sonraki
+  const onTouchStart = (e) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+  };
 
   return (
     <article className="project-card card">
@@ -169,60 +170,42 @@ function ProjectCard({ project, t }) {
       </div>
       <p>{project.desc}</p>
 
-      {/* --- KART İÇİ 4’LÜ KÜÇÜK MEDYA STRİP --- */}
-      {media.length > 0 && <div className="project-mini4">
-        <div className="mini4-wrap">
-          <button
-            className="mini4-nav prev"
-            type="button"
-            aria-label={t("common.prev")}
-            onClick={(e) => { e.stopPropagation(); prevSmall(); }}
-            disabled={!canPrevSmall}
-          >
+      {/* --- KART İÇİ KAYDIRILABİLİR MEDYA ŞERİDİ --- */}
+      {media.length > 0 && (
+        <div className="project-strip">
+          <button className="strip-nav prev" type="button" aria-label={t("common.prev")} onClick={() => scrollRow(-1)}>
             <ChevronLeft size={18} />
           </button>
-
-          <div className="mini4-row" role="list">
-            {visibleItems.map((m, i) => {
-              const absIndex = winStart + i;
-              return (
-                <button
-                  key={absIndex}
-                  type="button"
-                  role="listitem"
-                  className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
-                  onClick={() => openAt(absIndex)}
-                >
-                  {m.type === 'image' ? (
-                    <img src={m.src} alt={m.title || `${project.title} ${t('common.image')} ${absIndex + 1}`} loading="lazy"
-                      />
-                  ) : (
-                    <>
-                      <img src={m.thumb} alt={m.title || `${project.title} ${t('common.video')} ${absIndex + 1}`} loading="lazy"
-                        onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
-                      <span className="play-badge" aria-hidden="true">▶</span>
-                    </>
-                  )}
-                </button>
-              );
-            })}
+          <div className="strip-row" role="list" ref={rowRef}>
+            {media.map((m, i) => (
+              <button
+                key={i}
+                type="button"
+                role="listitem"
+                className={`thumb-btn ${m.type === 'video' ? 'thumb-video' : ''}`}
+                onClick={() => openAt(i)}
+              >
+                {m.type === 'image' ? (
+                  <img src={m.src} alt={m.title || `${project.title} ${t('common.image')} ${i + 1}`} loading="lazy" />
+                ) : (
+                  <>
+                    <img src={m.thumb} alt={m.title || `${project.title} ${t('common.video')} ${i + 1}`} loading="lazy"
+                      onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
+                    <span className="play-badge" aria-hidden="true">▶</span>
+                  </>
+                )}
+              </button>
+            ))}
           </div>
-
-          <button
-            className="mini4-nav next"
-            type="button"
-            aria-label={t("common.next")}
-            onClick={(e) => { e.stopPropagation(); nextSmall(); }}
-            disabled={!canNextSmall}
-          >
+          <button className="strip-nav next" type="button" aria-label={t("common.next")} onClick={() => scrollRow(1)}>
             <ChevronRight size={18} />
           </button>
         </div>
-      </div>}
+      )}
 
       {/* LIGHTBOX */}
       {isOpen && media[idx] && (
-        <div className="lightbox-overlay" role="dialog" aria-modal="true" onClick={close}>
+        <div className="lightbox-overlay" role="dialog" aria-modal="true" onClick={close} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
           <button className="lightbox-close" aria-label={t("common.close")} onClick={(e) => { e.stopPropagation(); close(); }}>
             <X size={22} />
           </button>
