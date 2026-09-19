@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { HardHat, Sprout, Cpu, ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
+import Reveal from '../components/Reveal.jsx';
 import '../styles/anasayfa.css';
 import { useTranslation } from "react-i18next";
 
@@ -34,7 +35,7 @@ export default function Anasayfa() {
         </div>
       </section>
 
-      <section className="container section">
+      <Reveal as="section" className="container section">
         <h2 className="section-title">{t("mainJobs")}</h2>
         <div className="services">
           {services.map(({ key, Icon }) => (
@@ -45,9 +46,9 @@ export default function Anasayfa() {
             </article>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="container section">
+      <Reveal as="section" className="container section">
         <h2 className="section-title">{t("process.title")}</h2>
         <ol className="steps">
           {t("process.steps", { returnObjects: true }).map((step, i) => (
@@ -58,9 +59,9 @@ export default function Anasayfa() {
             </li>
           ))}
         </ol>
-      </section>
+      </Reveal>
 
-      <section className="container section">
+      <Reveal as="section" className="container section">
         <h2 className="section-title">{t("faq.title")}</h2>
         <div className="faq">
           {t("faq.items", { returnObjects: true }).map((item, i) => (
@@ -70,15 +71,15 @@ export default function Anasayfa() {
             </details>
           ))}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="container section">
+      <Reveal as="section" className="container section">
         <div className="approach">
           <h3>{t("approach.title")}</h3>
           <p>{t("approach.description")}</p>
           <Link className="btn btn-gold" to="/biz-kimiz">{t("about.title")} <ArrowRight size={18} aria-hidden="true" /></Link>
         </div>
-      </section>
+      </Reveal>
     </main>
   );
 }
