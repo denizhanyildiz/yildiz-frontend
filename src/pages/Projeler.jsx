@@ -88,7 +88,7 @@ export default function Projeler() {
       start: t("projects.project2.startTime"),
       end: t("projects.project2.endTime"),
       desc: t("projects.project2.desc"),
-      images: [],
+      images: [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => ({ src: `/projects/tarim/${n}.webp` })),
       videos: [
         { src: "Jz8ECxTaJks" }
       ]
